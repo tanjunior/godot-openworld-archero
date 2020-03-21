@@ -24,4 +24,5 @@ func _on_Area_body_entered(body):
 		queue_free()
 	elif body.get_parent().name == "Enemies":
 #		print("Projectile Hit Enemy")
+		body.take_damage(2)
 		queue_free()

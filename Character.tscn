@@ -4,24 +4,29 @@
 [ext_resource path="res://Character.gd" type="Script" id=2]
 [ext_resource path="res://Actor.tscn" type="PackedScene" id=3]
 
-[sub_resource type="SpatialMaterial" id=1]
+[sub_resource type="CapsuleShape" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
 albedo_texture = ExtResource( 1 )
 
-[sub_resource type="CapsuleMesh" id=2]
-material = SubResource( 1 )
-
-[sub_resource type="CapsuleShape" id=3]
+[sub_resource type="CapsuleMesh" id=3]
+material = SubResource( 2 )
 
 [node name="Character" instance=ExtResource( 3 )]
 collision_layer = 2
 collision_mask = 15
 script = ExtResource( 2 )
 
-[node name="MeshInstance" type="MeshInstance" parent="." index="1"]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 2 )
-material/0 = null
+[node name="Detection" parent="." index="0"]
+collision_mask = 4
+
+[node name="HealthBar3D" parent="." index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.41299, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="2"]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-shape = SubResource( 3 )
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 1.5, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape" index="0"]
+mesh = SubResource( 3 )
+material/0 = null

@@ -1,0 +1,139 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Player.gd" type="Script" id=2]
+[ext_resource path="res://CameraTarget.gd" type="Script" id=3]
+[ext_resource path="res://Character.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Slime.tscn" type="PackedScene" id=5]
+[ext_resource path="res://analog/analog.tscn" type="PackedScene" id=6]
+
+[sub_resource type="NavigationMesh" id=1]
+vertices = PoolVector3Array( -38, 0.199992, -48.8, -48.8, 0.199992, -48.8, -48.8, 0.199992, -42.2, -38, 0.199992, -48.8, -48.8, 0.199992, -42.2, -48.8, 0.199992, -35.3, -20, 0.199992, 4.6, -12.5, 0.199992, -2.6, -5.3, 0.199992, -10.1, -38, 0.199992, -48.8, -48.8, 0.199992, -35.3, -48.8, 0.199992, -28.7, -48.8, 0.199992, 5.2, -20, 0.199992, 5.2, -20, 0.199992, 4.6, -48.8, 0.199992, -1.7, -38, 0.199992, -48.8, -48.8, 0.199992, -28.7, -48.8, 0.199992, -21.8, -26.9, 0.199992, -48.8, -5.3, 0.199992, -10.1, -4.7, 0.199992, -10.1, -4.7, 0.199992, -48.8, -15.8, 0.199992, -48.8, -48.8, 0.199992, -8.3, -48.8, 0.199992, -1.7, -20, 0.199992, 4.6, -48.8, 0.199992, -21.8, -48.8, 0.199992, -15.2, -20, 0.199992, 4.6, -5.3, 0.199992, -10.1, -15.8, 0.199992, -48.8, -26.9, 0.199992, -48.8, -48.8, 0.199992, -15.2, -48.8, 0.199992, -8.3, -20, 0.199992, 4.6, 48.7, 0.199992, -38.6, 48.7, 0.199992, -48.8, 41.8, 0.199992, -48.8, 48.7, 0.199992, -38.6, 41.8, 0.199992, -48.8, 35.2, 0.199992, -48.8, 48.7, 0.199992, -38.6, 35.2, 0.199992, -48.8, 28.6, 0.199992, -48.8, 48.7, 0.199992, -38.6, 28.6, 0.199992, -48.8, 22, 0.199992, -48.8, 48.7, 0.199992, -28.1, 8.5, 0.199992, -48.8, -2, 0.199992, -8, -2, 0.199992, -7.1, 48.7, 0.199992, -7.1, 48.7, 0.199992, -17.6, 15.1, 0.199992, -48.8, 1.9, 0.199992, -48.8, -4.7, 0.199992, -48.8, -4.7, 0.199992, -10.1, 48.7, 0.199992, -28.1, 22, 0.199992, -48.8, 15.1, 0.199992, -48.8, 48.7, 0.199992, -17.6, 8.5, 0.199992, -48.8, 1.9, 0.199992, -48.8, -4.7, 0.199992, -10.1, -2, 0.199992, -8, -10.7, 2.19999, -0.799999, -4.4, 2.19999, -7.1, -5, 2.19999, -7.4, -11.3, 2.19999, -1.1, -11.3, 2.19999, -1.1, -17.6, 2.19999, 5.2, -17, 2.19999, 5.5, -10.7, 2.19999, -0.799999, 40.3, 0.199992, 48.7, 48.7, 0.199992, 48.7, 48.7, 0.199992, 41.5, 40.3, 0.199992, 48.7, 48.7, 0.199992, 41.5, 48.7, 0.199992, 34.6, -2, 0.199992, -6.5, -9.5, 0.199992, 0.700001, -16.7, 0.199992, 8.2, 32.2, 0.199992, 48.7, 40.3, 0.199992, 48.7, 48.7, 0.199992, 34.6, 48.7, 0.199992, 27.7, -16.7, 0.199992, 8.2, 7.3, 0.199992, 48.7, 15.7, 0.199992, 48.7, 48.7, 0.199992, 13.6, 48.7, 0.199992, 6.7, -2, 0.199992, -6.5, 32.2, 0.199992, 48.7, 48.7, 0.199992, 27.7, 48.7, 0.199992, 20.8, 23.8, 0.199992, 48.7, 48.7, 0.199992, -7.1, -2, 0.199992, -7.1, -2, 0.199992, -6.5, 48.7, 0.199992, -0.199997, -16.7, 0.199992, 8.2, -17.3, 0.199992, 8.2, -17.3, 0.199992, 48.7, -9.2, 0.199992, 48.7, 48.7, 0.199992, 6.7, 48.7, 0.199992, -0.199997, -2, 0.199992, -6.5, 23.8, 0.199992, 48.7, 48.7, 0.199992, 20.8, 48.7, 0.199992, 13.6, 15.7, 0.199992, 48.7, -16.7, 0.199992, 8.2, -9.2, 0.199992, 48.7, -0.799999, 0.199992, 48.7, -16.7, 0.199992, 8.2, -0.799999, 0.199992, 48.7, 7.3, 0.199992, 48.7, -48.8, 0.199992, 37.6, -48.8, 0.199992, 48.7, -41, 0.199992, 48.7, -48.8, 0.199992, 37.6, -41, 0.199992, 48.7, -33.2, 0.199992, 48.7, -48.8, 0.199992, 37.6, -33.2, 0.199992, 48.7, -25.4, 0.199992, 48.7, -48.8, 0.199992, 26.8, -20, 0.199992, 6.1, -20, 0.199992, 5.2, -48.8, 0.199992, 5.2, -48.8, 0.199992, 16, -17.3, 0.199992, 8.2, -20, 0.199992, 6.1, -48.8, 0.199992, 16, -48.8, 0.199992, 26.8, -25.4, 0.199992, 48.7, -17.3, 0.199992, 48.7 )
+polygons = [ PoolIntArray( 2, 1, 0 ), PoolIntArray( 5, 4, 3 ), PoolIntArray( 8, 7, 6 ), PoolIntArray( 11, 10, 9 ), PoolIntArray( 15, 14, 12 ), PoolIntArray( 12, 14, 13 ), PoolIntArray( 19, 18, 16 ), PoolIntArray( 16, 18, 17 ), PoolIntArray( 23, 22, 20 ), PoolIntArray( 20, 22, 21 ), PoolIntArray( 26, 25, 24 ), PoolIntArray( 32, 31, 27 ), PoolIntArray( 27, 31, 28 ), PoolIntArray( 28, 31, 30 ), PoolIntArray( 28, 30, 29 ), PoolIntArray( 35, 34, 33 ), PoolIntArray( 38, 37, 36 ), PoolIntArray( 41, 40, 39 ), PoolIntArray( 44, 43, 42 ), PoolIntArray( 48, 47, 45 ), PoolIntArray( 45, 47, 46 ), PoolIntArray( 54, 53, 49 ), PoolIntArray( 49, 53, 52 ), PoolIntArray( 49, 52, 50 ), PoolIntArray( 50, 52, 51 ), PoolIntArray( 57, 56, 55 ), PoolIntArray( 61, 60, 58 ), PoolIntArray( 58, 60, 59 ), PoolIntArray( 65, 64, 62 ), PoolIntArray( 62, 64, 63 ), PoolIntArray( 69, 68, 66 ), PoolIntArray( 66, 68, 67 ), PoolIntArray( 73, 72, 70 ), PoolIntArray( 70, 72, 71 ), PoolIntArray( 76, 75, 74 ), PoolIntArray( 79, 78, 77 ), PoolIntArray( 82, 81, 80 ), PoolIntArray( 86, 85, 83 ), PoolIntArray( 83, 85, 84 ), PoolIntArray( 92, 91, 87 ), PoolIntArray( 87, 91, 90 ), PoolIntArray( 87, 90, 89 ), PoolIntArray( 87, 89, 88 ), PoolIntArray( 96, 95, 93 ), PoolIntArray( 93, 95, 94 ), PoolIntArray( 100, 99, 97 ), PoolIntArray( 97, 99, 98 ), PoolIntArray( 104, 103, 101 ), PoolIntArray( 101, 103, 102 ), PoolIntArray( 107, 106, 105 ), PoolIntArray( 111, 110, 108 ), PoolIntArray( 108, 110, 109 ), PoolIntArray( 114, 113, 112 ), PoolIntArray( 117, 116, 115 ), PoolIntArray( 120, 119, 118 ), PoolIntArray( 123, 122, 121 ), PoolIntArray( 127, 126, 124 ), PoolIntArray( 124, 126, 125 ), PoolIntArray( 131, 130, 128 ), PoolIntArray( 128, 130, 129 ), PoolIntArray( 137, 136, 132 ), PoolIntArray( 132, 136, 133 ), PoolIntArray( 133, 136, 135 ), PoolIntArray( 133, 135, 134 ) ]
+cell/height = 0.1
+agent/height = 0.1
+agent/radius = 1.0
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="QuadMesh" id=3]
+material = SubResource( 2 )
+size = Vector2( 10, 10 )
+
+[sub_resource type="ConcavePolygonShape" id=4]
+data = PoolVector3Array( -5, -5, 0, -5, 5, 0, 5, 5, 0, -5, -5, 0, 5, 5, 0, 5, -5, 0 )
+
+[sub_resource type="BoxShape" id=5]
+
+[sub_resource type="CubeMesh" id=6]
+
+[node name="main" type="Spatial"]
+
+[node name="Navigation" type="Navigation" parent="."]
+
+[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="Navigation"]
+navmesh = SubResource( 1 )
+
+[node name="Level" type="Spatial" parent="Navigation/NavigationMeshInstance"]
+
+[node name="Floor" type="MeshInstance" parent="Navigation/NavigationMeshInstance/Level"]
+transform = Transform( 10, 0, 0, 0, -1.62921e-06, 1, 0, -10, -1.62921e-07, 0, 0, 0 )
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Navigation/NavigationMeshInstance/Level/Floor"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Navigation/NavigationMeshInstance/Level/Floor/StaticBody"]
+shape = SubResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="Navigation/NavigationMeshInstance/Level"]
+transform = Transform( 7.07107, 0, 0.707107, 0, 1, 0, -7.07107, 0, 0.707107, -11, 1, -1 )
+collision_mask = 15
+
+[node name="CollisionShape" type="CollisionShape" parent="Navigation/NavigationMeshInstance/Level/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Navigation/NavigationMeshInstance/Level/StaticBody/CollisionShape"]
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Analog" parent="CenterContainer" instance=ExtResource( 6 )]
+position = Vector2( 360, 1120 )
+_isDynamicallyShowing = true
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.052
+margin_bottom = -0.559998
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel"]
+margin_right = 40.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InputToggle" type="Button" parent="Panel"]
+margin_left = 617.0
+margin_right = 720.0
+margin_bottom = 66.0
+toggle_mode = true
+pressed = true
+text = "KEYBOARD"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CameraFollowToggle" type="Button" parent="Panel"]
+margin_left = 475.0
+margin_right = 603.0
+margin_bottom = 66.0
+toggle_mode = true
+pressed = true
+text = "FOLLOW CAMERA"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.0871556, 0.996195, 0, -0.996195, 0.0871556, 0, 50, 5 )
+current = true
+size = 10.0
+
+[node name="InterpolatedCamera" type="InterpolatedCamera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.0871556, 0.996195, 0, -0.996195, 0.0871556, 0, 50, 5 )
+current = true
+target = NodePath("../Player/CameraTarget")
+speed = 2.0
+enabled = true
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+script = ExtResource( 2 )
+
+[node name="CameraTarget" type="Position3D" parent="Player"]
+transform = Transform( 1, 0, 0, 0, 0.0871556, 0.996195, 0, -0.996195, 0.0871556, 0, 48, 5 )
+script = ExtResource( 3 )
+distance = 5.0
+height = 48.5
+angle = -85.0
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Slime" parent="Enemies" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 27 )
+
+[node name="Slime2" parent="Enemies" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.893, 0, -3.832 )
+[connection signal="toggled" from="Panel/InputToggle" to="Player" method="_on_InputToggle_toggled"]
+[connection signal="toggled" from="Panel/CameraFollowToggle" to="Player" method="_on_CameraFollowToggle_toggled"]

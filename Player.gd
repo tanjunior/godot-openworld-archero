@@ -25,7 +25,6 @@ func attack(deltaTime):
 	get_parent().add_child(projectile)
 
 func _on_InputToggle_toggled(button_pressed):
-	var inputToggle = get_node("../Panel/InputToggle")
 	if button_pressed:
 		keyboard_mode = true
 	else:

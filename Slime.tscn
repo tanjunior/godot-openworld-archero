@@ -1,15 +1,74 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Actor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemy.gd" type="Script" id=2]
+[ext_resource path="res://addons/fsm/fsm.gd" type="Script" id=3]
 
-[sub_resource type="SpatialMaterial" id=1]
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
 albedo_color = Color( 0.396078, 0.882353, 0.243137, 1 )
 
-[sub_resource type="CubeMesh" id=2]
-material = SubResource( 1 )
+[sub_resource type="CubeMesh" id=3]
+material = SubResource( 2 )
 
-[sub_resource type="BoxShape" id=3]
+[sub_resource type="GDScript" id=4]
+script/source = "extends Node
+
+func _state_init():
+	pass
+
+func _enter():
+	print(\"entered idle state\")
+	
+func _update(_delta):
+	pass
+
+func _exit():
+	pass
+"
+
+[sub_resource type="GDScript" id=5]
+script/source = "extends Node
+
+
+var target
+func _state_init():
+	pass
+
+func _enter():
+	pass
+	
+func _update(delta):
+	if self.owner.target == null:
+		return
+		
+	if self.owner.target.health <= 0:
+		get_parent().change_state(\"idle\")
+	else:
+		self.owner._update_path()
+		self.owner.movement(delta)
+	
+func _exit():
+	pass
+"
+
+[sub_resource type="GDScript" id=6]
+script/source = "extends Node
+
+func _state_init():
+	pass
+
+func _enter():
+	print(\"entered dead state\")
+	self.owner.queue_free()
+	
+func _update(_delta):
+	pass
+
+func _exit():
+	pass
+"
 
 [node name="Slime" groups=[
 "Enemies",
@@ -18,9 +77,30 @@ collision_layer = 4
 collision_mask = 15
 script = ExtResource( 2 )
 
-[node name="MeshInstance" type="MeshInstance" parent="." index="1"]
-mesh = SubResource( 2 )
-material/0 = null
+[node name="Detection" parent="." index="0"]
+collision_mask = 2
+
+[node name="HealthBar3D" parent="." index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.78566, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="2"]
-shape = SubResource( 3 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape" index="0"]
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="FSM" type="Node" parent="." index="3"]
+script = ExtResource( 3 )
+USE_PHYSICS_PROCESS = true
+INIT_STATE = "idle"
+
+[node name="idle" type="Node" parent="FSM" index="0"]
+script = SubResource( 4 )
+
+[node name="aggro" type="Node" parent="FSM" index="1"]
+script = SubResource( 5 )
+
+[node name="dead" type="Node" parent="FSM" index="2"]
+script = SubResource( 6 )
