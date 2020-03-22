@@ -1,6 +1,5 @@
-# Godot-Analog-Stick
-Godot Analog stick suitable for using in games on mobile devices and tablets (all touch screen devices)
+# Open World mobile game with Archero like combat that allows ease of play on mobile phones
 
-made by Jakub Grzesik (http://www.kivano.games/)
-ported to v 3.1 and example by (Mohamed Sami Hadef)
-permission by Jakub Grzesik
+Analog Stick from https://godotengine.org/asset-library/asset/318
+
+Finite State Machine from https://godotengine.org/asset-library/asset/399
