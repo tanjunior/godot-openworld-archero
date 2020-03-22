@@ -49,6 +49,7 @@ func movement(delta):
 		atdir.y = 0
 
 		look_at(get_transform().origin+atdir, UP)
+		# warning-ignore:return_value_discarded
 		move_and_slide(atdir * speed, UP)
 #		var t = Transform()
 #		t.origin = atpos

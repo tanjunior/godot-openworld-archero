@@ -36,6 +36,7 @@ func _physics_process(_delta):
 		pass
 
 	velocity = velocity.normalized() * speed
+	# warning-ignore:return_value_discarded
 	move_and_slide(velocity, UP)
 	if get_slide_count() != 0:
 		var collider = get_slide_collision(get_slide_count() -1).collider
